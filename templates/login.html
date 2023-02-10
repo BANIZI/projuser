@@ -1,0 +1,40 @@
+<html>
+	<head>
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<marquee><title>User Login Form</title></marquee>
+				
+				<link rel="stylesheet" href="{{url_for('static',filename='bootstrap.min.css')}}">
+				<link rel="stylesheet" href="{{url_for('static',filename='style.css')}}"> 
+			<style>
+					body{
+						background: #92236d;
+					}
+			</style>
+
+	</head>
+
+		<body>	
+
+			{% block content %}
+				<div class="container">
+					<marquee><h2>User Login</h2></marquee>
+					<form method="post" action="/login">
+	   					 {% if session.mesage is defined and mesage %}
+							<div class="alert alert-warning">{{ session.mesage }}</div>
+						{% endif %}
+						<div class="form-group">
+							<label for="email">Email:</label>
+							<input type="email" class="form-control" id="email" name="email" placeholder="Enter email" name="email">
+						</div>
+						<div class="form-group">
+							<label for="pwd">Password:</label>
+							<input type="password" class="form-control" id="password" name="password" placeholder="Enter password" name="pswd">
+						</div>    
+							<input type="submit" value="Valider">	
+							<p class="bottom">Dont't have an account?  <a class="bottom" href="/signup"> Register here</a></p>
+					</form>
+				</div>
+			{% endblock %}
+		</body>
+</html>
